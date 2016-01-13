@@ -1,0 +1,156 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="utf-8">
+    <title>Document</title>
+    <script type="text/javascript" src="./jquery-1.11.2.min.js"></script>
+    <script type="text/javascript" src="./pageSwitch.js"></script>
+    <style>
+        * {
+            padding: 0;
+            margin: 0;
+        }
+        html, body {
+            height: 100%;
+            overflow: hidden;
+        }
+        #container, .sections, .section {
+            height: 100%;
+            position: relative;
+        }
+        #section0,
+        #section1,
+        #section2,
+        #section3 {
+            background-color: #000;
+            background-size: cover;
+            background-position: 50% 50%;
+            text-align: center;
+            color: white;
+            text-shadow: 1px 1px 1px #333;
+        }
+        #section0 {
+            background-image: url(images/1.jpg);
+        }
+        #section1 {
+            background-image: url(images/2.jpg);
+        }
+        #section2 {
+            background-image: url(images/3.jpg);
+        }
+        #section3 {
+            background-image: url(images/4.jpg);
+        }
+        .intro {
+            position: absolute;
+            top: 50%;
+            width: 100%;
+            -webkit-transform: translateY(-50%);
+            transform: translateY(-50%);
+            text-align: center;
+        }
+        .pages{
+            position:fixed;
+            right: 10px;
+            top: 50%;
+            list-style: none;
+        }
+        .pages li{
+            width: 8px;
+            height: 8px;
+            border-radius: 50%;
+            background: #fff;
+            margin: 0 0 10px 5px;
+        }
+        .pages li.active{
+            width: 14px;
+            height: 14px;
+            border: 2px solid #FFFE00;
+            background: none;
+            margin-left: 0;
+        }
+        .ease-in-out-left {
+            -webkit-transform: translateX(-100%);
+            transform: translateX(-100%);
+            -webkit-animation: sectitle0 1s ease-in-out 100ms forwards;
+            animation: sectitle0 1s ease-in-out 100ms forwards;
+        }
+        .ease-in-out-right {
+            -webkit-transform: translateX(100%);
+            transform: translateX(100%);
+            -webkit-animation: sec0 1s ease-in-out 100ms forwards;
+            animation: sec0 1s ease-in-out 100ms forwards;
+        }
+        @-webkit-keyframes sectitle0 {
+            0%{
+                -webkit-transform: translateX(-100%);
+            }
+            100%{
+                -webkit-transform: translateX(0);
+            }
+        }
+        @keyframes sectitle0 {
+            0%{
+                transform: translateX(-100%);
+            }
+            100%{
+                transform: translateX(0);
+            }
+        }
+        @-webkit-keyframes sec0 {
+            0%{
+                -webkit-transform: translateX(100%);
+            }
+            100%{
+                -webkit-transform: translateX(0);
+            }
+        }
+        @keyframes sec0 {
+            0%{
+                transform: translateX(100%);
+            }
+            100%{
+                transform: translateX(0);
+            }
+        }
+    </style>
+</head>
+<body>
+    <div id="container">
+        <div class="sections">
+            <div class="section" id="section0">
+                <h3>this is the page</h3>
+                <div class="intro">
+                    <h1 class="title ease-in-out-left">switchPage</h1>
+                    <p class="ease-in-out-right">Create Beautiful Fullscreen Scrolling Websites</p>
+                </div>
+            </div>
+            <div class="section" id="section1">
+                <div class="intro">
+                    <h3>this is the page</h3>
+                </div>
+            </div>
+            <div class="section" id="section2">
+                <div class="intro">
+                    <h3>this is the page</h3>
+                </div>
+            </div>
+            <div class="section" id="section3">
+                <div class="intro">
+                    <h3>this is the page</h3>
+                </div>
+            </div>
+        </div>
+    </div>
+    <script type="text/javascript">
+        $("#container").PageSwitch({
+            direction: "horizontal",
+            // loop: true
+            callback: function(element) {
+                $("h3").addClass("ease-in-out-left");
+            }
+        });
+        // $("#container").PageSwitch("init");
+    </script>
+</body>
+</html>
